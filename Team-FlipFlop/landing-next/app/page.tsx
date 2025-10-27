@@ -16,7 +16,10 @@ export default function Home() {
           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             KnowledgeBase Pro
           </h1>
-          <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
+          <button 
+            onClick={() => window.open('http://localhost:3000/', '_blank')}
+            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition cursor-pointer"
+          >
             Get Started
           </button>
         </div>
@@ -38,7 +41,10 @@ export default function Home() {
             Figma designs, and Slack conversations in one intelligent interface.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition shadow-lg text-lg">
+            <button 
+              onClick={() => window.open('http://localhost:3000/', '_blank')}
+              className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition shadow-lg text-lg cursor-pointer"
+            >
               Get Started Free
             </button>
           </div>
@@ -266,7 +272,10 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-90">
             Start chatting with your data today. Advanced RAG technology meets intuitive design.
           </p>
-          <button className="px-10 py-5 bg-white text-purple-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition shadow-xl">
+          <button 
+            onClick={() => window.open('http://localhost:3000/', '_blank')}
+            className="px-10 py-5 bg-white text-purple-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition shadow-xl cursor-pointer"
+          >
             Get Started
           </button>
         </div>
