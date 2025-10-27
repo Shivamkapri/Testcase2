@@ -1,266 +1,285 @@
 'use client'
 
-import Header from '@/components/common/Header'
-import Footer from '@/components/common/Footer'
-import Hero from '@/components/landing/Hero'
-import Features from '@/components/landing/Features'
-import Pricing from '@/components/landing/Pricing'
-import FAQ from '@/components/landing/FAQ'
+import { useState } from 'react'
 
 export default function Home() {
+  const [responseLength, setResponseLength] = useState('Medium (1000 tokens)')
+  const [temperature, setTemperature] = useState(0.3)
+  const [sources, setSources] = useState(4)
+  const [searchSource, setSearchSource] = useState('All sources')
+
   return (
-    <main className="min-h-screen">
-      <Header />
-      
-      {/* Circular Orbit Animation Banner */}
-      <div className="w-full bg-black border-b border-gray-800 py-12 flex flex-col items-center relative overflow-visible">
-        <style jsx>{`
-          .orbit {
-            position: relative;
-          }
-          .orbit-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
-            padding: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-            object-fit: contain;
-          }
-          .orbit-icon[data-i='0'] {
-            transform: rotate(0deg) translate(280px) rotate(0deg);
-            animation: orbit-rotate-0 20s linear infinite;
-            animation-delay: 0s;
-          }
-          .orbit-icon[data-i='1'] {
-            transform: rotate(60deg) translate(280px) rotate(-60deg);
-            animation: orbit-rotate-1 20s linear infinite;
-            animation-delay: -3.33s;
-          }
-          .orbit-icon[data-i='2'] {
-            transform: rotate(120deg) translate(280px) rotate(-120deg);
-            animation: orbit-rotate-2 20s linear infinite;
-            animation-delay: -6.66s;
-          }
-          .orbit-icon[data-i='3'] {
-            transform: rotate(180deg) translate(280px) rotate(-180deg);
-            animation: orbit-rotate-3 20s linear infinite;
-            animation-delay: -10s;
-          }
-          .orbit-icon[data-i='4'] {
-            transform: rotate(240deg) translate(280px) rotate(-240deg);
-            animation: orbit-rotate-4 20s linear infinite;
-            animation-delay: -13.33s;
-          }
-          .orbit-icon[data-i='5'] {
-            transform: rotate(300deg) translate(280px) rotate(-300deg);
-            animation: orbit-rotate-5 20s linear infinite;
-            animation-delay: -16.66s;
-          }
-          @keyframes orbit-rotate-0 {
-            0% { transform: rotate(0deg) translate(280px) rotate(0deg); }
-            100% { transform: rotate(360deg) translate(280px) rotate(-360deg); }
-          }
-          @keyframes orbit-rotate-1 {
-            0% { transform: rotate(60deg) translate(280px) rotate(-60deg); }
-            100% { transform: rotate(420deg) translate(280px) rotate(-420deg); }
-          }
-          @keyframes orbit-rotate-2 {
-            0% { transform: rotate(120deg) translate(280px) rotate(-120deg); }
-            100% { transform: rotate(480deg) translate(280px) rotate(-480deg); }
-          }
-          @keyframes orbit-rotate-3 {
-            0% { transform: rotate(180deg) translate(280px) rotate(-180deg); }
-            100% { transform: rotate(540deg) translate(280px) rotate(-540deg); }
-          }
-          @keyframes orbit-rotate-4 {
-            0% { transform: rotate(240deg) translate(280px) rotate(-240deg); }
-            100% { transform: rotate(600deg) translate(280px) rotate(-600deg); }
-          }
-          @keyframes orbit-rotate-5 {
-            0% { transform: rotate(300deg) translate(280px) rotate(-300deg); }
-            100% { transform: rotate(660deg) translate(280px) rotate(-660deg); }
-          }
-        `}</style>
-        <div className="relative flex items-center justify-center" style={{ height: '650px', width: '850px' }}>
-          {/* Rotating icons in a circle */}
-          <div className="absolute left-1/2 top-1/2" style={{ transform: 'translate(-50%, -50%)' }}>
-            <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg z-10">
-              TeamMemory
+    <main className="min-h-screen bg-black text-white">
+      {/* Header */}
+      <header className="border-b border-gray-800 py-4">
+        <div className="container mx-auto px-4 lg:px-8 flex justify-between items-center">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            KnowledgeBase Pro
+          </h1>
+          <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
+            Get Started
+          </button>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              KnowledgeBase Pro
             </span>
-          </div>
-          {/* Orbit icons */}
-          <div className="absolute left-1/2 top-1/2" style={{ transform: 'translate(-50%, -50%)' }}>
-            <div className="orbit relative" style={{ height: '620px', width: '620px' }}>
-        <img src="/icons/slack.png" alt="Slack" className="orbit-icon" data-i="0" />
-        <img src="/icons/notion.png" alt="Notion" className="orbit-icon" data-i="1" />
-        <img src="/icons/google.png" alt="Google Workspace" className="orbit-icon" data-i="2" />
-        <img src="/icons/slack.png" alt="Slack" className="orbit-icon" data-i="3" />
-        <img src="/icons/notion.png" alt="Notion" className="orbit-icon" data-i="4" />
-        <img src="/icons/google.png" alt="Google" className="orbit-icon" data-i="5" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Hero />
-      
-      {/* Problem Section */}
-      <section className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              😫 Sound Familiar?
-            </h2>
-          </div>
-          
-          <div className="max-w-2xl mx-auto space-y-6 mb-12">
-            <div className="flex items-center gap-4 text-lg text-gray-300">
-              <span className="text-3xl">❌</span>
-              <p>"What did we decide about this?"</p>
-            </div>
-            <div className="flex items-center gap-4 text-lg text-gray-300">
-              <span className="text-3xl">❌</span>
-              <p>"Who suggested that approach?"</p>
-            </div>
-            <div className="flex items-center gap-4 text-lg text-gray-300">
-              <span className="text-3xl">❌</span>
-              <p>"When did we discuss the budget?"</p>
-            </div>
-            <div className="flex items-center gap-4 text-lg text-gray-300">
-              <span className="text-3xl">❌</span>
-              <p>"Why did we choose this tool?"</p>
-            </div>
-          </div>
-          
-          <div className="max-w-2xl mx-auto p-8 bg-gray-900 border border-gray-800 rounded-xl shadow-2xl text-center">
-            <p className="text-xl text-gray-200">
-              Teams waste <strong className="text-red-500">20% of their time</strong> searching for information that already exists.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              ✨ One AI That Remembers Everything
-            </h2>
-          </div>
-          
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
-            <div className="p-8 border-2 border-blue-500 rounded-xl text-center min-w-[200px] bg-gray-900">
-              <h3 className="text-xl font-bold text-blue-400 mb-2">Automatic Collection</h3>
-              <p className="text-gray-300">Connects to all your work tools</p>
-            </div>
-            <span className="text-4xl font-bold text-blue-400 hidden md:block">→</span>
-            <div className="p-8 border-2 border-blue-500 rounded-xl text-center min-w-[200px] bg-gray-900">
-              <h3 className="text-xl font-bold text-blue-400 mb-2">Ask Anything</h3>
-              <p className="text-gray-300">Get instant answers</p>
-            </div>
-          </div>
-          
-          <ul className="max-w-xl mx-auto space-y-3 text-lg text-gray-300">
-            <li>• Connects to all your work tools</li>
-            <li>• Captures decisions automatically</li>
-            <li>• Answers questions instantly</li>
-            <li>• Works on mobile & desktop</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              How TeamMemory Works
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div className="text-center">
-              <div className="text-5xl mb-4">1️⃣</div>
-              <h3 className="text-2xl font-bold text-white mb-3">Connect Your Tools</h3>
-              <p className="text-lg text-gray-400">Link Slack, Notion, Gmail in 2 mins</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl mb-4">2️⃣</div>
-              <h3 className="text-2xl font-bold text-white mb-3">AI Captures Decisions</h3>
-              <p className="text-lg text-gray-400">Automatically detects important info</p>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl mb-4">3️⃣</div>
-              <h3 className="text-2xl font-bold text-white mb-3">Ask Natural Questions</h3>
-              <p className="text-lg text-gray-400">"What database did we choose?"</p>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition shadow-lg">
-              See It In Action →
+          </h1>
+          <h2 className="text-2xl md:text-3xl text-gray-300 mb-8 font-light">
+            Your AI-Powered Knowledge Assistant
+          </h2>
+          <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Unlock the power of your data with advanced RAG technology. Chat with your documents, 
+            Figma designs, and Slack conversations in one intelligent interface.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition shadow-lg text-lg">
+              Get Started Free
             </button>
           </div>
         </div>
       </section>
 
-      <Features />
-
-      {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-black">
+      {/* Features Grid */}
+      <section className="py-16 md:py-24 bg-gray-900/50">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Trusted by Fast-Moving Teams
-            </h2>
-          </div>
-          
-          <div className="max-w-3xl mx-auto p-8 bg-gray-900 border border-gray-800 rounded-xl shadow-2xl text-center mb-12">
-            <div className="text-3xl mb-4">⭐⭐⭐⭐⭐</div>
-            <blockquote className="text-xl text-gray-300 italic mb-6">
-              "TeamMemory saved us 10+ hours per week searching for decisions and context. 
-              It's like having a perfect memory for our entire team."
-            </blockquote>
-            <div className="text-gray-400">
-              <strong className="text-white">Sarah Chen</strong>, CTO at TechCo
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl">
+              <div className="text-4xl mb-4">🤖</div>
+              <h3 className="text-xl font-bold mb-3">AI-Powered Intelligence</h3>
+              <p className="text-gray-400">Advanced RAG technology with Gemini AI for precise, contextual responses</p>
             </div>
-          </div>
-          
-          <div className="flex flex-wrap gap-6 justify-center">
-            {['Company A', 'Company B', 'Company C', 'Company D', 'Company E'].map((company) => (
-              <div key={company} className="px-6 py-3 bg-gray-900 border border-gray-800 rounded-lg text-gray-400 font-semibold">
-                {company}
-              </div>
-            ))}
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl">
+              <div className="text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-bold mb-3">Multi-Source Knowledge</h3>
+              <p className="text-gray-400">Integrates Figma designs, Slack conversations, and uploaded documents</p>
+            </div>
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl">
+              <div className="text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold mb-3">Real-Time Processing</h3>
+              <p className="text-gray-400">Lightning-fast vector search with confidence scoring for reliable answers</p>
+            </div>
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl">
+              <div className="text-4xl mb-4">🔒</div>
+              <h3 className="text-xl font-bold mb-3">Secure & Private</h3>
+              <p className="text-gray-400">JWT authentication with encrypted data storage and user privacy protection</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <Pricing />
-      <FAQ />
+      {/* Response Settings Demo */}
+      <section className="py-16 md:py-24 bg-black">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Response Settings
+            </h2>
+            <p className="text-xl text-gray-400">🎤 Voice features available</p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Response Length</h3>
+                <select 
+                  value={responseLength} 
+                  onChange={(e) => setResponseLength(e.target.value)}
+                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                >
+                  <option>Short (500 tokens)</option>
+                  <option>Medium (1000 tokens)</option>
+                  <option>Long (2000 tokens)</option>
+                  <option>Very Long (4000 tokens)</option>
+                </select>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Temperature ({temperature})</h3>
+                <input 
+                  type="range" 
+                  min="0" 
+                  max="1" 
+                  step="0.1" 
+                  value={temperature}
+                  onChange={(e) => setTemperature(parseFloat(e.target.value))}
+                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                />
+                <p className="text-sm text-gray-400 mt-2">Lower = more focused, Higher = more creative</p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Sources to retrieve ({sources})</h3>
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="10" 
+                  value={sources}
+                  onChange={(e) => setSources(parseInt(e.target.value))}
+                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                />
+                <p className="text-sm text-gray-400 mt-2">More sources = broader context</p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Search Source</h3>
+                <select 
+                  value={searchSource} 
+                  onChange={(e) => setSearchSource(e.target.value)}
+                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                >
+                  <option>All sources</option>
+                  <option>Figma designs only</option>
+                  <option>Slack chats only</option>
+                </select>
+                <p className="text-sm text-gray-400 mt-2">Filter retrieval to only Figma design nodes or Slack chats</p>
+              </div>
+            </div>
+            
+            <div className="mt-8 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="text-sm font-medium">Good Confidence</span>
+                </div>
+                <span className="text-lg font-bold text-green-400">67%</span>
+              </div>
+              <button className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-medium transition">
+                Save as PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Data Sources */}
+      <section className="py-16 md:py-24 bg-gray-900/50">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Connect Your Knowledge Sources
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl text-center">
+              <div className="text-5xl mb-4">📄</div>
+              <h3 className="text-xl font-bold mb-3">Documents</h3>
+              <p className="text-gray-400">Upload PDFs, Word docs, and text files for AI analysis</p>
+            </div>
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl text-center">
+              <div className="text-5xl mb-4">🎨</div>
+              <h3 className="text-xl font-bold mb-3">Figma Designs</h3>
+              <p className="text-gray-400">Connect Figma projects and chat with your design files</p>
+            </div>
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl text-center">
+              <div className="text-5xl mb-4">💬</div>
+              <h3 className="text-xl font-bold mb-3">Slack Conversations</h3>
+              <p className="text-gray-400">Import Slack history and find answers from past discussions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced Features */}
+      <section className="py-16 md:py-24 bg-black">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Advanced AI Features
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm font-bold">✓</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Vector Search Technology</h3>
+                    <p className="text-gray-400">Advanced semantic search across all your data sources</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm font-bold">✓</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Confidence Scoring</h3>
+                    <p className="text-gray-400">Know how reliable each answer is with accuracy percentages</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm font-bold">✓</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2">Multi-Modal Understanding</h3>
+                    <p className="text-gray-400">Process text, images, and design files seamlessly</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-8 bg-gray-900 border border-gray-800 rounded-xl">
+              <div className="mb-4">
+                <div className="text-sm text-gray-400 mb-2">Sample Query:</div>
+                <div className="p-4 bg-gray-800 rounded-lg text-blue-300 italic">
+                  "What are the design specifications for the login button in our mobile app?"
+                </div>
+              </div>
+              <div className="border-t border-gray-700 pt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium">Sources Found:</span>
+                  <span className="text-blue-400">4 matches</span>
+                </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium">Response Time:</span>
+                  <span className="text-green-400">0.8s</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-medium">Confidence:</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span className="text-green-400 font-bold">92%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Never Forget Again?
+            Ready to Unlock Your Knowledge?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join 500+ teams using TeamMemory to supercharge their collective memory.
+            Start chatting with your data today. Advanced RAG technology meets intuitive design.
           </p>
           <button className="px-10 py-5 bg-white text-purple-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition shadow-xl">
-            Start 14-Day Free Trial
+            Get Started
           </button>
-          <p className="mt-4 text-sm opacity-80">No credit card required</p>
         </div>
       </section>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="border-t border-gray-800 py-8">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <p className="text-gray-400">
+            © 2025 KnowledgeBase Pro. Powered by advanced RAG technology.
+          </p>
+        </div>
+      </footer>
     </main>
   )
 }

@@ -5,12 +5,12 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TeamMemory - Your Team\'s AI-Powered Memory',
-  description: 'Never lose track of decisions, discussions, and important details across Slack, email, meetings, and docs.',
-  keywords: ['AI memory', 'team collaboration', 'decision tracking', 'knowledge management'],
+  title: 'KnowledgeBase Pro - Your AI-Powered Knowledge Assistant',
+  description: 'Unlock the power of your data with advanced RAG technology. Chat with your documents, Figma designs, and Slack conversations in one intelligent interface.',
+  keywords: ['RAG technology', 'AI knowledge assistant', 'document chat', 'Figma integration', 'Slack search', 'vector search', 'knowledge management'],
   openGraph: {
-    title: 'TeamMemory - Your Team\'s AI-Powered Memory',
-    description: 'Never lose track of decisions, discussions, and important details. Join 500+ teams saving 10hrs/week.',
+    title: 'KnowledgeBase Pro - Your AI-Powered Knowledge Assistant',
+    description: 'Advanced RAG technology with Gemini AI for precise, contextual responses. Connect documents, Figma, and Slack.',
     type: 'website',
   },
 }
